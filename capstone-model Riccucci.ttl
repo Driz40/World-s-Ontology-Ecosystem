@@ -1,0 +1,218 @@
+@prefix cap:  <https://ksoe.ai/ontology/capstone#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix obo:  <http://purl.obolibrary.org/obo/> .
+@prefix cco:  <http://www.ontologyrepository.com/CommonCoreOntologies/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+
+<https://ksoe.ai/ontology/capstone>
+    rdf:type owl:Ontology ;
+    dc:title "Day 5 Capstone — Pump Inspection Pattern"@en ;
+    dc:creator "Ryan A. Riccucci" ;
+    dc:date "2026-08-07" ;
+    rdfs:comment """Ten domain classes, four minted relations, three reused. Deliberately small.
+    Reuse before minting: participation, aboutness and inherence are taken from BFO/RO/IAO rather
+    than re-coined. CCO terms are MIREOT stubs using the 1.7 readable IRI scheme."""@en .
+
+################################################################################
+# MIREOT stubs
+################################################################################
+cco:Artifact rdf:type owl:Class ; rdfs:subClassOf obo:BFO_0000030 ; rdfs:label "Artifact"@en .
+cco:Person rdf:type owl:Class ; rdfs:subClassOf obo:BFO_0000040 ; rdfs:label "Person"@en .
+cco:Act rdf:type owl:Class ; rdfs:subClassOf obo:BFO_0000015 ; rdfs:label "Act"@en .
+cco:InformationContentEntity rdf:type owl:Class ; rdfs:subClassOf obo:BFO_0000031 ;
+    rdfs:label "Information Content Entity"@en .
+cco:DirectiveInformationContentEntity rdf:type owl:Class ;
+    rdfs:subClassOf cco:InformationContentEntity ; rdfs:label "Directive Information Content Entity"@en .
+cco:DescriptiveInformationContentEntity rdf:type owl:Class ;
+    rdfs:subClassOf cco:InformationContentEntity ; rdfs:label "Descriptive Information Content Entity"@en .
+cco:MeasurementInformationContentEntity rdf:type owl:Class ;
+    rdfs:subClassOf cco:DescriptiveInformationContentEntity ; rdfs:label "Measurement Information Content Entity"@en .
+
+################################################################################
+# CLASSES  (10 domain classes)
+################################################################################
+
+cap:Pump rdf:type owl:Class ;
+    rdfs:subClassOf cco:Artifact ;
+    rdfs:label "Pump"@en ;
+    obo:IAO_0000115 "An artifact designed to move a fluid by mechanical action."@en .
+
+cap:TechnicianRole rdf:type owl:Class ;
+    rdfs:subClassOf obo:BFO_0000023 ;
+    rdfs:label "Technician Role"@en ;
+    obo:IAO_0000115 "A role borne by a person in virtue of that person's qualification and assignment to perform maintenance acts on equipment."@en ;
+    obo:IAO_0000116 "Modelled as a role rather than as a subclass of person: Alex is a person who bears this role, and could cease to bear it without ceasing to be Alex."@en .
+
+cap:Inspection rdf:type owl:Class ;
+    rdfs:subClassOf cco:Act ;
+    rdfs:label "Inspection"@en ;
+    obo:IAO_0000115 "An act in which an agent examines an artifact in order to determine its condition."@en .
+
+cap:MaintenanceProcedure rdf:type owl:Class ;
+    rdfs:subClassOf cco:DirectiveInformationContentEntity ;
+    rdfs:label "Maintenance Procedure"@en ;
+    obo:IAO_0000115 "A directive information content entity that prescribes maintenance acts to be performed on an artifact and the interval at which they are to recur."@en ;
+    obo:IAO_0000116 "A prescription, not an observed fact. The thirty-day interval is something the procedure requires, not something that has happened."@en .
+
+cap:Vibration rdf:type owl:Class ;
+    rdfs:subClassOf obo:BFO_0000019 ;
+    rdfs:label "Vibration"@en ;
+    obo:IAO_0000115 "A quality inhering in a material entity in virtue of the oscillatory displacement of that entity about a reference position."@en ;
+    obo:IAO_0000116 "The quality is in the pump. The number 4.2 is not in the pump; it is part of a measurement about the quality."@en .
+
+cap:VibrationMeasurement rdf:type owl:Class ;
+    rdfs:subClassOf cco:MeasurementInformationContentEntity ;
+    rdfs:label "Vibration Measurement"@en ;
+    obo:IAO_0000115 "A measurement information content entity that is about a vibration quality and that carries a magnitude and a unit."@en .
+
+cap:InspectionReport rdf:type owl:Class ;
+    rdfs:subClassOf cco:DescriptiveInformationContentEntity ;
+    rdfs:label "Inspection Report"@en ;
+    obo:IAO_0000115 "A descriptive information content entity that is the output of an inspection and that is about the artifact inspected."@en ;
+    obo:IAO_0000116 "The report is not the pump and is not the inspection. It is about the pump and is produced by the inspection."@en .
+
+cap:MaintenanceRecommendation rdf:type owl:Class ;
+    rdfs:subClassOf cco:DirectiveInformationContentEntity ;
+    rdfs:label "Maintenance Recommendation"@en ;
+    obo:IAO_0000115 "A directive information content entity, part of an inspection report, that prescribes a maintenance act of a specified type."@en ;
+    obo:IAO_0000116 "A recommendation that a bearing be replaced is not a bearing replacement. No replacement act exists in this model, because none has occurred."@en .
+
+cap:WorkOrder rdf:type owl:Class ;
+    rdfs:subClassOf cco:DirectiveInformationContentEntity ;
+    rdfs:label "Work Order"@en ;
+    obo:IAO_0000115 "A directive information content entity that authorises and requests the performance of a maintenance act of a specified type on a specified artifact."@en .
+
+cap:BearingReplacement rdf:type owl:Class ;
+    rdfs:subClassOf cco:Act ;
+    rdfs:label "Bearing Replacement"@en ;
+    obo:IAO_0000115 "An act in which a worn or failed bearing is removed from an artifact and a replacement bearing installed."@en ;
+    obo:IAO_0000116 "Referenced as a type by the recommendation and the work order. It has no instance in this model: the scenario reports that a replacement was requested, not that one occurred."@en .
+
+# The class is also declared an individual so that directives can reference the
+# act TYPE they prescribe. This is OWL 2 DL punning, which Protege supports.
+cap:BearingReplacement rdf:type owl:NamedIndividual .
+
+################################################################################
+# DISJOINTNESS
+################################################################################
+[] rdf:type owl:AllDisjointClasses ;
+   owl:members ( cco:DirectiveInformationContentEntity cco:DescriptiveInformationContentEntity ) .
+[] rdf:type owl:AllDisjointClasses ;
+   owl:members ( cap:Vibration cap:VibrationMeasurement ) .
+
+################################################################################
+# OBJECT PROPERTIES  (4 minted; participation, aboutness and inherence reused)
+################################################################################
+
+cap:inspects rdf:type owl:ObjectProperty ;
+    rdfs:domain cap:Inspection ; rdfs:range cap:Pump ;
+    rdfs:label "inspects"@en ;
+    obo:IAO_0000115 "Relates an inspection to the artifact that is examined in it."@en ;
+    owl:inverseOf cap:inspectedIn .
+
+cap:inspectedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain cap:Pump ; rdfs:range cap:Inspection ;
+    rdfs:label "inspected in"@en ;
+    obo:IAO_0000115 "Relates an artifact to an inspection in which it is examined."@en .
+
+cap:hasOutput rdf:type owl:ObjectProperty ;
+    rdfs:domain cco:Act ; rdfs:range cco:InformationContentEntity ;
+    rdfs:label "has output"@en ;
+    obo:IAO_0000115 "Relates an act to an information content entity that is produced by it."@en .
+
+cap:prescribes rdf:type owl:ObjectProperty ;
+    rdfs:domain cco:DirectiveInformationContentEntity ;
+    rdfs:label "prescribes"@en ;
+    obo:IAO_0000115 "Relates a directive information content entity to the type of act it requires or requests to be performed."@en .
+
+cap:measurementOf rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf obo:IAO_0000136 ;
+    rdfs:domain cap:VibrationMeasurement ; rdfs:range cap:Vibration ;
+    rdfs:label "measurement of"@en ;
+    obo:IAO_0000115 "Relates a measurement information content entity to the quality whose magnitude it records."@en .
+
+################################################################################
+# DATA PROPERTIES
+################################################################################
+
+cap:hasMagnitude rdf:type owl:DatatypeProperty ;
+    rdfs:domain cap:VibrationMeasurement ; rdfs:range xsd:decimal ;
+    rdfs:label "has magnitude"@en ;
+    obo:IAO_0000115 "The numeric value a measurement records."@en .
+
+cap:hasUnit rdf:type owl:DatatypeProperty ;
+    rdfs:domain cap:VibrationMeasurement ; rdfs:range xsd:string ;
+    rdfs:label "has unit"@en ;
+    obo:IAO_0000115 "The unit of measure in which a magnitude is expressed."@en ;
+    obo:IAO_0000116 "Carried as a literal here for brevity. A production model would designate a unit individual from a units ontology, so that the unit is an entity rather than a string."@en .
+
+cap:hasIntervalDays rdf:type owl:DatatypeProperty ;
+    rdfs:domain cap:MaintenanceProcedure ; rdfs:range xsd:integer ;
+    rdfs:label "has interval days"@en ;
+    obo:IAO_0000115 "The number of days a maintenance procedure prescribes between successive performances."@en .
+
+################################################################################
+# DEFINED CLASS  (populated by the reasoner, not asserted)
+################################################################################
+
+cap:InspectedPump rdf:type owl:Class ;
+    owl:equivalentClass [ rdf:type owl:Class ; owl:intersectionOf (
+        cap:Pump
+        [ rdf:type owl:Restriction ; owl:onProperty cap:inspectedIn ; owl:someValuesFrom cap:Inspection ] ) ] ;
+    rdfs:label "Inspected Pump"@en ;
+    obo:IAO_0000115 "A pump that has been examined in at least one inspection."@en .
+
+################################################################################
+# NAMED INDIVIDUALS
+################################################################################
+
+cap:Alex rdf:type owl:NamedIndividual , cco:Person ;
+    rdfs:label "Alex"@en ;
+    obo:RO_0000053 cap:Alex_TechnicianRole .
+
+cap:Alex_TechnicianRole rdf:type owl:NamedIndividual , cap:TechnicianRole ;
+    rdfs:label "Alex's technician role"@en ;
+    obo:RO_0000052 cap:Alex .
+
+cap:P-17 rdf:type owl:NamedIndividual , cap:Pump ;
+    rdfs:label "Pump P-17"@en ;
+    obo:RO_0000053 cap:P-17_Vibration .
+
+cap:P-17_Vibration rdf:type owl:NamedIndividual , cap:Vibration ;
+    rdfs:label "vibration of Pump P-17"@en ;
+    obo:RO_0000052 cap:P-17 .
+
+cap:Procedure-30Day rdf:type owl:NamedIndividual , cap:MaintenanceProcedure ;
+    rdfs:label "30-day pump inspection procedure"@en ;
+    cap:hasIntervalDays "30"^^xsd:integer ;
+    cap:prescribes cap:Inspection .
+
+cap:Inspection-17 rdf:type owl:NamedIndividual , cap:Inspection ;
+    rdfs:label "Inspection 17"@en ;
+    obo:BFO_0000057 cap:Alex ;
+    cap:inspects cap:P-17 ;
+    cap:hasOutput cap:R-17 .
+
+cap:R-17 rdf:type owl:NamedIndividual , cap:InspectionReport ;
+    rdfs:label "Report R-17"@en ;
+    obo:IAO_0000136 cap:P-17 ;
+    obo:BFO_0000051 cap:Measurement-17 , cap:Recommendation-17 .
+
+cap:Measurement-17 rdf:type owl:NamedIndividual , cap:VibrationMeasurement ;
+    rdfs:label "vibration measurement recorded in R-17"@en ;
+    cap:measurementOf cap:P-17_Vibration ;
+    cap:hasMagnitude "4.2"^^xsd:decimal ;
+    cap:hasUnit "mm/s" .
+
+cap:Recommendation-17 rdf:type owl:NamedIndividual , cap:MaintenanceRecommendation ;
+    rdfs:label "recommendation to replace bearing, in R-17"@en ;
+    cap:prescribes cap:BearingReplacement ;
+    obo:IAO_0000136 cap:P-17 .
+
+cap:W-22 rdf:type owl:NamedIndividual , cap:WorkOrder ;
+    rdfs:label "Work Order W-22"@en ;
+    cap:prescribes cap:BearingReplacement ;
+    obo:IAO_0000136 cap:P-17 .

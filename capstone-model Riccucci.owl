@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:cap="https://ksoe.ai/ontology/capstone#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:obo="http://purl.obolibrary.org/obo/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Vibration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
+    <rdfs:label xml:lang="en">Vibration</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A quality inhering in a material entity in virtue of the oscillatory displacement of that entity about a reference position.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">The quality is in the pump. The number 4.2 is not in the pump; it is part of a measurement about the quality.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/Act">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000015"/>
+    <rdfs:label xml:lang="en">Act</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Alex">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Person"/>
+    <rdfs:label xml:lang="en">Alex</rdfs:label>
+    <obo:RO_0000053 rdf:resource="https://ksoe.ai/ontology/capstone#Alex_TechnicianRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#R-17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#InspectionReport"/>
+    <rdfs:label xml:lang="en">Report R-17</rdfs:label>
+    <obo:IAO_0000136 rdf:resource="https://ksoe.ai/ontology/capstone#P-17"/>
+    <obo:BFO_0000051 rdf:resource="https://ksoe.ai/ontology/capstone#Measurement-17"/>
+    <obo:BFO_0000051 rdf:resource="https://ksoe.ai/ontology/capstone#Recommendation-17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#hasIntervalDays">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://ksoe.ai/ontology/capstone#MaintenanceProcedure"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label xml:lang="en">has interval days</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">The number of days a maintenance procedure prescribes between successive performances.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b2">
+    <rdf:first rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity"/>
+    <rdf:rest rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Procedure-30Day">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#MaintenanceProcedure"/>
+    <rdfs:label xml:lang="en">30-day pump inspection procedure</rdfs:label>
+    <cap:hasIntervalDays rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cap:hasIntervalDays>
+    <cap:prescribes rdf:resource="https://ksoe.ai/ontology/capstone#Inspection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#hasMagnitude">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://ksoe.ai/ontology/capstone#VibrationMeasurement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label xml:lang="en">has magnitude</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">The numeric value a measurement records.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#measurementOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000136"/>
+    <rdfs:domain rdf:resource="https://ksoe.ai/ontology/capstone#VibrationMeasurement"/>
+    <rdfs:range rdf:resource="https://ksoe.ai/ontology/capstone#Vibration"/>
+    <rdfs:label xml:lang="en">measurement of</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">Relates a measurement information content entity to the quality whose magnitude it records.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Pump">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Artifact"/>
+    <rdfs:label xml:lang="en">Pump</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">An artifact designed to move a fluid by mechanical action.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#BearingReplacement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Act"/>
+    <rdfs:label xml:lang="en">Bearing Replacement</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">An act in which a worn or failed bearing is removed from an artifact and a replacement bearing installed.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">Referenced as a type by the recommendation and the work order. It has no instance in this model: the scenario reports that a replacement was requested, not that one occurred.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/DescriptiveInformationContentEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/InformationContentEntity"/>
+    <rdfs:label xml:lang="en">Descriptive Information Content Entity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#WorkOrder">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity"/>
+    <rdfs:label xml:lang="en">Work Order</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A directive information content entity that authorises and requests the performance of a maintenance act of a specified type on a specified artifact.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Inspection-17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#Inspection"/>
+    <rdfs:label xml:lang="en">Inspection 17</rdfs:label>
+    <obo:BFO_0000057 rdf:resource="https://ksoe.ai/ontology/capstone#Alex"/>
+    <cap:inspects rdf:resource="https://ksoe.ai/ontology/capstone#P-17"/>
+    <cap:hasOutput rdf:resource="https://ksoe.ai/ontology/capstone#R-17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#prescribes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity"/>
+    <rdfs:label xml:lang="en">prescribes</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">Relates a directive information content entity to the type of act it requires or requests to be performed.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000040"/>
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#TechnicianRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
+    <rdfs:label xml:lang="en">Technician Role</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A role borne by a person in virtue of that person's qualification and assignment to perform maintenance acts on equipment.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">Modelled as a role rather than as a subclass of person: Alex is a person who bears this role, and could cease to bear it without ceasing to be Alex.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Alex_TechnicianRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#TechnicianRole"/>
+    <rdfs:label xml:lang="en">Alex's technician role</rdfs:label>
+    <obo:RO_0000052 rdf:resource="https://ksoe.ai/ontology/capstone#Alex"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#MaintenanceRecommendation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity"/>
+    <rdfs:label xml:lang="en">Maintenance Recommendation</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A directive information content entity, part of an inspection report, that prescribes a maintenance act of a specified type.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">A recommendation that a bearing be replaced is not a bearing replacement. No replacement act exists in this model, because none has occurred.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#InspectionReport">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DescriptiveInformationContentEntity"/>
+    <rdfs:label xml:lang="en">Inspection Report</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A descriptive information content entity that is the output of an inspection and that is about the artifact inspected.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">The report is not the pump and is not the inspection. It is about the pump and is produced by the inspection.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#inspectedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://ksoe.ai/ontology/capstone#Pump"/>
+    <rdfs:range rdf:resource="https://ksoe.ai/ontology/capstone#Inspection"/>
+    <rdfs:label xml:lang="en">inspected in</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">Relates an artifact to an inspection in which it is examined.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#hasUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="https://ksoe.ai/ontology/capstone#VibrationMeasurement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">has unit</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">The unit of measure in which a magnitude is expressed.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">Carried as a literal here for brevity. A production model would designate a unit individual from a units ontology, so that the unit is an entity rather than a string.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#P-17_Vibration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#Vibration"/>
+    <rdfs:label xml:lang="en">vibration of Pump P-17</rdfs:label>
+    <obo:RO_0000052 rdf:resource="https://ksoe.ai/ontology/capstone#P-17"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b9">
+    <rdf:first rdf:resource="https://ksoe.ai/ontology/capstone#Pump"/>
+    <rdf:rest rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b10"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#InspectedPump">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:equivalentClass rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b7"/>
+    <rdfs:label xml:lang="en">Inspected Pump</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A pump that has been examined in at least one inspection.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b3">
+    <rdf:first rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DescriptiveInformationContentEntity"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Measurement-17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#VibrationMeasurement"/>
+    <rdfs:label xml:lang="en">vibration measurement recorded in R-17</rdfs:label>
+    <cap:measurementOf rdf:resource="https://ksoe.ai/ontology/capstone#P-17_Vibration"/>
+    <cap:hasMagnitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.2</cap:hasMagnitude>
+    <cap:hasUnit>mm/s</cap:hasUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#W-22">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#WorkOrder"/>
+    <rdfs:label xml:lang="en">Work Order W-22</rdfs:label>
+    <cap:prescribes rdf:resource="https://ksoe.ai/ontology/capstone#BearingReplacement"/>
+    <obo:IAO_0000136 rdf:resource="https://ksoe.ai/ontology/capstone#P-17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#hasOutput">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Act"/>
+    <rdfs:range rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/InformationContentEntity"/>
+    <rdfs:label xml:lang="en">has output</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">Relates an act to an information content entity that is produced by it.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Inspection">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/Act"/>
+    <rdfs:label xml:lang="en">Inspection</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">An act in which an agent examines an artifact in order to determine its condition.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/InformationContentEntity"/>
+    <rdfs:label xml:lang="en">Directive Information Content Entity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#P-17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#Pump"/>
+    <rdfs:label xml:lang="en">Pump P-17</rdfs:label>
+    <obo:RO_0000053 rdf:resource="https://ksoe.ai/ontology/capstone#P-17_Vibration"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/MeasurementInformationContentEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DescriptiveInformationContentEntity"/>
+    <rdfs:label xml:lang="en">Measurement Information Content Entity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/InformationContentEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000031"/>
+    <rdfs:label xml:lang="en">Information Content Entity</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dc:title xml:lang="en">Day 5 Capstone — Pump Inspection Pattern</dc:title>
+    <dc:creator>Ryan A. Riccucci</dc:creator>
+    <dc:date>2026-08-07</dc:date>
+    <rdfs:comment xml:lang="en">Ten domain classes, four minted relations, three reused. Deliberately small.
+    Reuse before minting: participation, aboutness and inherence are taken from BFO/RO/IAO rather
+    than re-coined. CCO terms are MIREOT stubs using the 1.7 readable IRI scheme.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b7">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#inspects">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://ksoe.ai/ontology/capstone#Inspection"/>
+    <rdfs:range rdf:resource="https://ksoe.ai/ontology/capstone#Pump"/>
+    <rdfs:label xml:lang="en">inspects</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">Relates an inspection to the artifact that is examined in it.</obo:IAO_0000115>
+    <owl:inverseOf rdf:resource="https://ksoe.ai/ontology/capstone#inspectedIn"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#Recommendation-17">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ksoe.ai/ontology/capstone#MaintenanceRecommendation"/>
+    <rdfs:label xml:lang="en">recommendation to replace bearing, in R-17</rdfs:label>
+    <cap:prescribes rdf:resource="https://ksoe.ai/ontology/capstone#BearingReplacement"/>
+    <obo:IAO_0000136 rdf:resource="https://ksoe.ai/ontology/capstone#P-17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#MaintenanceProcedure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/DirectiveInformationContentEntity"/>
+    <rdfs:label xml:lang="en">Maintenance Procedure</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A directive information content entity that prescribes maintenance acts to be performed on an artifact and the interval at which they are to recur.</obo:IAO_0000115>
+    <obo:IAO_0000116 xml:lang="en">A prescription, not an observed fact. The thirty-day interval is something the procedure requires, not something that has happened.</obo:IAO_0000116>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b2"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ksoe.ai/ontology/capstone#inspectedIn"/>
+    <owl:someValuesFrom rdf:resource="https://ksoe.ai/ontology/capstone#Inspection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ksoe.ai/ontology/capstone#VibrationMeasurement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.ontologyrepository.com/CommonCoreOntologies/MeasurementInformationContentEntity"/>
+    <rdfs:label xml:lang="en">Vibration Measurement</rdfs:label>
+    <obo:IAO_0000115 xml:lang="en">A measurement information content entity that is about a vibration quality and that carries a magnitude and a unit.</obo:IAO_0000115>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b10">
+    <rdf:first rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b8"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ontologyrepository.com/CommonCoreOntologies/Artifact">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000030"/>
+    <rdfs:label xml:lang="en">Artifact</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b6">
+    <rdf:first rdf:resource="https://ksoe.ai/ontology/capstone#VibrationMeasurement"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b5">
+    <rdf:first rdf:resource="https://ksoe.ai/ontology/capstone#Vibration"/>
+    <rdf:rest rdf:nodeID="n87024aca6c0b45c0b784164952e6eb48b6"/>
+  </rdf:Description>
+</rdf:RDF>
